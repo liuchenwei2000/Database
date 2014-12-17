@@ -1,0 +1,11 @@
+
+
+事务
+
+START TRANSACTION 命令会持续追踪后续所有的SQL语句，直到输入COMMIT或ROLLBACK为止。在COMMIT之前数据库都不会发生任何改变；ROLLBACK可以逆转过程，让每件事回到START TRANSACTION前的状态。如下：
+
+START TRANSACTION;
+SELECT * FROM book;
+UPDATE book SET author="unknown" WHERE author IS NULL;
+SELECT * FROM book;
+ROLLBACK;

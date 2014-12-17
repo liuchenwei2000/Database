@@ -1,0 +1,70 @@
+
+DESC my_table 用于查看表结构定义。
+
+SHOW TABLES 用于查看库中所有的表和视图。
+SHOW CREATE TABLE my_table 用于查看建表的SQl语句。
+SHOW COLUMNS FROM my_table 用于查看表的所有列及数据类型。
+SHOW INDEX FROM my_table 用于查看表的所有索引列以及索引类型。
+
+ALTER TABLE my_table ADD COLUMN phone VARCHAR(10) AFTER/BEFORE id 
+用于为表添加列，并将该列放置于 id 列之后/前。AFTER/BEFORE语句是可选的，如果不使用则新列默认会添加到表的最后。
+
+ALTER TABLE my_table ADD COLUMN phone VARCHAR(10) FIRST/LAST
+用于为表添加列，并将该列放置于所有列之前/后。另外，还可以使用SECOND、THIRD等关键字直接指定新列位置。
+
+ALTER TABLE my_table RENAME TO your_table
+用于给表重命名。
+
+ALTER TABLE my_table MODIFY COLUMN phone VARCHAR(20)
+用于修改列的类型。
+
+ALTER TABLE my_table CHANGE COLUMN phone mobile VARCHAR(20) NOT NULL
+用于修改列名和列的类型及其他属性（本例将phone列改为了mobile列）。如果把数据改成另一种类型，则可能会丢失数据。
+
+ALTER TABLE my_table DROP COLUMN phone 
+用于删除列（包括数据）。
+
+ALTER TABLE my_table DROP PRIMARY KEY
+用于移除主键的设置但不改变列及列中的数据。
+
+
+CASE表达式可以搭配SELECT、UPDATE、DELETE、INSERT语句。可以在关键字END后加上WHERE子句，这样CASE就只会作用在符合WHERE条件的列上。
+CASE 
+	WHEN score<60 THEN 'Z'
+	WHEN score<70 THEN 'D'
+	WHEN score<80 THEN 'C'
+	WHEN score<90 THEN 'B'
+	ELSE 'A'
+END;
+
+DISTINCT关键字可以去除重复，比如 select distinct name from my_table 返回的name列的值都是不同的。
+
+LIMIT关键字可以限定查询结果的数量，比如 select name from my_table limit 2 返回的结果最多有2行；又比如 select name from my_table limit 0,4 返回的是从第0行开始计算的4行数据。
+
+
+AS 关键字和别名
+
+AS关键字可以为表或者列设置别名，该关键字往往可以省略。
+
+/* 创建表 my_table，并将 another_table 表的 description列中不为null的数据插入到 my_table 表的 content 列中。  */
+CREATE TABLE my_table (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	content VARCHAR(100) NOT NULL
+) AS
+SELECT description AS content
+FROM another_table
+WHERE description IS NOT NULL;
+
+CREATE TABLE my_table AS SELECT ... FROM ... WHERE ...
+CREATE TABLE AS 接收来自SELECT查询的结果并把结果制作成一张表。这种方式是Oracle和MySQL数据库使用的，SQLServer要使用下面的方式：
+
+SELECT INTO语句从一个表中选取数据，然后把数据插入到另一个表中。常用于创建表的备份或者对记录进行存档。
+
+SELECT * INTO backup_table FROM my_table;
+将 my_table 表的数据复制到 backup_table 表中。
+
+SELECT * INTO backup_table FROM my_table WHERE 1=0;
+可以快速的复制 my_table 的表结构到 backup_table。
+
+SELECT T.name,P.code INTO backup_table FROM my_table T INNER JOIN another_table P ON T.id=P.tid ;
+也可以从多表连接查询结果中选取数据。

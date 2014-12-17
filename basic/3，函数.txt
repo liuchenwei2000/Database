@@ -1,0 +1,25 @@
+
+
+字符串函数
+
+字符串函数不会改变存储在表中的内容，只是把字符串修改后的模样当成查询结果返回。
+
+LEFT(my_column, length)：从列的左侧选取length个字符。
+RIGHT(my_column, length)：从列的右侧选取length个字符。
+SUBSTRING(my_column, start_position, length)：截取字符串，截取起始位置为start_position，截取长度由length指定。
+UPPER(my_column):将字符串大写。
+LOWER(my_column)：将字符串小写。
+REVERSE(my_column)：反转字符串。
+LENGTH(my_column)：返回字符串长度。
+LTRIM(my_column)：清除左侧多余空格。
+RTRIM(my_column)：清除右侧多余空格。
+
+
+其他常用函数（它们经常与GROUP BY语句配合使用）
+
+SUM(my_column)：对某列求和。
+AVG(my_column)：对某列求平均值。
+MAX(my_column)：取某列的最大值。
+MIN(my_column)：取某列的最小值。
+COUNT(my_column)：返回某列的行数，如果某行数据值为NULL则不纳入计算。
+DISTINCT COUNT(my_column)：返回某列去除重复后的行数。

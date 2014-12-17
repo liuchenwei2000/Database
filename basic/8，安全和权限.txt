@@ -1,0 +1,33 @@
+
+
+安全
+
+默认情况下，根用户（root）具有所有数据库操控能力，因为根用户必须可为其他用户创建账号。
+
+创建新用户
+
+CREATE USER test IDENTIFIED BY 'p@ssword';
+创建一个名为 test、密码为 p@ssword 的新用户。
+
+
+权限管理
+
+使用GRANT语句可以控制用户对表和列的可执行的操作
+
+GRANT SELECT ON my_table TO test;
+将my_table表的SELECT权限赋予用户test。
+
+GRANT SELECT(column1) ON my_table TO test;
+将my_table表的column1列的SELECT权限赋予用户test，其他列则不允许其select。
+
+GRANT INSERT,UPDATE,DELETE ON my_table TO test;
+将my_table表的INSERT,UPDATE,DELETE权限赋予用户test。
+
+GRANT ALL ON my_table TO test,user1,user2;
+将my_table表的所有权限（CRUD）赋予用户test、user1和user2。
+
+
+使用REVOKE语句可以撤销用户对表和列的可执行的操作
+
+REVOKE SELECT ON my_table FROM test;
+撤销test用户在my_table表的SELECT权限
