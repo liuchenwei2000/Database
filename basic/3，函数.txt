@@ -1,5 +1,4 @@
 
-
 字符串函数
 
 字符串函数不会改变存储在表中的内容，只是把字符串修改后的模样当成查询结果返回。
@@ -15,7 +14,9 @@ LTRIM(my_column)：清除左侧多余空格。
 RTRIM(my_column)：清除右侧多余空格。
 
 
-其他常用函数（它们经常与GROUP BY语句配合使用）
+聚集函数（它们经常与GROUP BY语句配合使用）
+
+聚集函数会忽略列值为NULL的行。聚集函数用来汇总数据，这些函数是高效设计的，它们返回结果一般比应用程序中计算要快得多。
 
 SUM(my_column)：对某列求和。
 AVG(my_column)：对某列求平均值。
@@ -23,3 +24,23 @@ MAX(my_column)：取某列的最大值。
 MIN(my_column)：取某列的最小值。
 COUNT(my_column)：返回某列的行数，如果某行数据值为NULL则不纳入计算。
 DISTINCT COUNT(my_column)：返回某列去除重复后的行数。
+
+
+数值处理函数
+
+ABS()：返回绝对值。
+COS()：返回余弦。
+EXP()：返回指数值。
+PI()：返回圆周率。
+SIN()：返回正弦。
+SQRT()：返回平方根。
+TAN()：返回正切值。
+
+
+日期类函数在不同的数据库中几乎都是不同的，比如获取当前日期时间：
+Oracle：SYSDATE
+MySQL：NOW()、SYSDATE()、CURRENT_TIMESTAMP
+SQLServer：GETDATE()
+DB2：CURRENT_DATE
+PostgreSQL：CURRENT_DATE
+Sybase：GETDATE()

@@ -1,0 +1,49 @@
+
+
+事务
+
+
+事务处理是一种机制，用来管理必须成批执行的SQL操作，以保证数据库不包含不完整的操作结果。利用事务处理，可以保证一组操作不会中途停止，它们或者作为整体执行，或者完全不执行。如果没有错误发生，整组语句都会提交到数据库表；如果发生错误，则进行回滚以恢复数据库到某个已知且安全的状态。
+
+
+事务的ACID特性：
+
+原子性（atomic）
+事务由一个或多个行为捆绑在一起组成，好像是一个单独的工作单元。原子性确保在事务中的所有操作要么都发生，要么都不发生。
+如果所有的行为都成功了，那么事务就是成功的；如果任何一个行为失败了，那么整个事务就失败了，并且被回滚。
+
+一致性（consistent）
+一旦一个事务结束了（不管成功与否），系统所处的状态和它的业务规则是一致的。也就是说，数据应当不会被破坏。
+
+隔离性（isolated）
+事务应该允许多名用户操作同一数据，一名用户的操作不会和其他用户的操作相混淆。隔离通常意味着要锁定数据库里的记录行或表。
+
+持久性（durable）
+一旦事务完成，事务的结果应该持久化，这样不管是系统崩溃还是别的原因，它们都将一直存在。
+
+
+事务处理用来管理INSERT、UPDATE和DELETE语句，不能回滚SELECT语句（也没有必要），也不能回滚CREATE或DROP操作。事务处理中可以使用这些语句，但进行回滚时，它们不被撤销。
+
+不同的DBMS用来实现事务处理的语法有所不同，比如SQLServer开始事务使用 BEGIN TRANSACTION，而MySQL使用 START TRANSACTION。
+
+START TRANSACTION 命令会持续追踪后续所有的SQL语句，直到输入COMMIT或ROLLBACK为止。在COMMIT之前数据库都不会发生任何改变；ROLLBACK可以逆转过程，让每件事回到START TRANSACTION前的状态。
+如下：
+
+START TRANSACTION;
+SELECT * FROM book;
+UPDATE book SET author="unknown" WHERE author IS NULL;
+SELECT * FROM book;
+ROLLBACK;
+
+
+SAVEPOINT
+
+为了支持回滚部分事务处理，必须能在事务处理块中合适的位置放置占位符。这样，如果需要回滚，可以回滚到某个占位符。在SQL中，这些占位符称为保留点（save point）。
+
+在Oracle和MySQL中创建保留点，需要使用如下语句：SAVEPOINT sp1;
+在SQLServer和Sybase中创建保留点，需要使用如下语句：SAVE TRANSACTION sp1;
+
+每个保留点都取标识它的惟一名字，以便在回滚时DBMS知道要回滚到何处。
+
+在Oracle和MySQL中回滚到保留点，需要使用如下语句：ROLLBACK TO sp1;
+在SQLServer和Sybase中回滚到保留点，需要使用如下语句：ROLLBACK TRANSACTION sp1;

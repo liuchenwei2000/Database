@@ -87,6 +87,13 @@ CREATE TABLE my_table (
 ALTER TABLE my_table DROP FOREIGN KEY my_parent_parent_id_fk;
 
 
+主键列需要满足以下条件：
+1，任意两行都不具有相同的主键值。
+2，每行都必须具有一个主键值（即主键列不允许NULL值）。
+3，主键列中的值不允许修改或更新。
+4，主键值不能重用（如果某行被删除，它的主键不能再赋给以后的新行）。
+
+
 DEFAULT约束用于向列中插入默认值，如果新纪录的某列值为NULL而该列又有默认值，那么默认值会添加到新纪录。
 
 在表创建时加入DEFAULT约束
@@ -123,3 +130,7 @@ ALTER TABLE my_table
 撤销约束（c_name是约束名）
 
 ALTER TABLE my_table DROP CONSTRAINT c_name;
+
+
+
+一般来说，约束的处理比触发器快，因此在可能的时候，应该尽量使用约束。

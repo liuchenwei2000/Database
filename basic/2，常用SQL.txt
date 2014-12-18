@@ -1,10 +1,18 @@
 
+标准SQL由ANSI标准委员会管理，从而称为ANSI SQL。所有主要的DBMS，即使有自己的扩展，但都支持ANSI SQL。
+各个实现有自己的名称，比如PL/SQL是Oracle公司为其数据库产品开发的SQL扩展，Transact-SQL是微软与Sybase公司合作开发的适用于微软SQL Server和Sybase数据库。
+
+对SQL代码进行注释的标准方式是在之前放置--（两个连字符），有的DBMS还支持其他的注释语法，但所有的DBMS都支持--。
+
+
 DESC my_table 用于查看表结构定义。
 
 SHOW TABLES 用于查看库中所有的表和视图。
 SHOW CREATE TABLE my_table 用于查看建表的SQl语句。
 SHOW COLUMNS FROM my_table 用于查看表的所有列及数据类型。
 SHOW INDEX FROM my_table 用于查看表的所有索引列以及索引类型。
+
+如果想从表中删除所有行，可以使用 TRUNCATE TABLE 语句，它完成相同的工作，但速度更快（因为不记录数据的变动）。并且能针对具有自动递增值的字段，做计数重置归零重新计算的作用。
 
 ALTER TABLE my_table ADD COLUMN phone VARCHAR(10) AFTER/BEFORE id 
 用于为表添加列，并将该列放置于 id 列之后/前。AFTER/BEFORE语句是可选的，如果不使用则新列默认会添加到表的最后。
