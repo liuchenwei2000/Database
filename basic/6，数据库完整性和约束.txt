@@ -124,13 +124,12 @@ CREATE TABLE my_table (
 也可以通过ALTER语句修改表定义，为其加入约束。如下：
 
 ALTER TABLE my_table 
-	ADD CONSTRAINT CHECK (direction IN ('E','W','S','N'));
+	ADD CONSTRAINT c_name CHECK (direction IN ('E','W','S','N'));
 
 
 撤销约束（c_name是约束名）
 
 ALTER TABLE my_table DROP CONSTRAINT c_name;
-
 
 
 一般来说，约束的处理比触发器快，因此在可能的时候，应该尽量使用约束。

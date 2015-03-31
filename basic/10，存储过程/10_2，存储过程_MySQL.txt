@@ -10,7 +10,7 @@ CREATE PROCEDURE 过程名 ([过程参数[,...]])
 3，过程体的开始与结束使用BEGIN与END进行标识。
 
 示例：
-CREATE PROCEDURE p_counter(OUT total  int)
+CREATE PROCEDURE p_counter(OUT total int)
 BEGIN
 	SELECT count(*) into total FROM book;
 END;
