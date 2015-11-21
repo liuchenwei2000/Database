@@ -1,29 +1,29 @@
 
-1£¬¶¨Òå´æ´¢¹ý³Ì
+1ï¼Œå®šä¹‰å­˜å‚¨è¿‡ç¨‹
 
-MySQL´æ´¢¹ý³Ì´´½¨µÄ¸ñÊ½£º
-CREATE PROCEDURE ¹ý³ÌÃû ([¹ý³Ì²ÎÊý[,...]])
-[ÌØÐÔ ...] ¹ý³ÌÌå
+MySQLå­˜å‚¨è¿‡ç¨‹åˆ›å»ºçš„æ ¼å¼ï¼š
+CREATE PROCEDURE è¿‡ç¨‹å ([è¿‡ç¨‹å‚æ•°[,...]])
+[ç‰¹æ€§ ...] è¿‡ç¨‹ä½“
 
-1£¬[]ÄÚµÄÏîÊôÓÚ¿ÉÑ¡ÔªËØ¡£
-2£¬´æ´¢¹ý³Ì¸ù¾ÝÐèÒª¿ÉÄÜ»áÓÐÊäÈë¡¢Êä³ö¡¢ÊäÈëÊä³ö²ÎÊý£¬,Èç¹ûÓÐ¶à¸ö²ÎÊýÓÃ","·Ö¸î¿ª¡£
-3£¬¹ý³ÌÌåµÄ¿ªÊ¼Óë½áÊøÊ¹ÓÃBEGINÓëEND½øÐÐ±êÊ¶¡£
+1ï¼Œ[]å†…çš„é¡¹å±žäºŽå¯é€‰å…ƒç´ ã€‚
+2ï¼Œå­˜å‚¨è¿‡ç¨‹æ ¹æ®éœ€è¦å¯èƒ½ä¼šæœ‰è¾“å…¥ã€è¾“å‡ºã€è¾“å…¥è¾“å‡ºå‚æ•°ï¼Œ,å¦‚æžœæœ‰å¤šä¸ªå‚æ•°ç”¨","åˆ†å‰²å¼€ã€‚
+3ï¼Œè¿‡ç¨‹ä½“çš„å¼€å§‹ä¸Žç»“æŸä½¿ç”¨BEGINä¸ŽENDè¿›è¡Œæ ‡è¯†ã€‚
 
-Ê¾Àý£º
+ç¤ºä¾‹ï¼š
 CREATE PROCEDURE p_counter(OUT total int)
 BEGIN
 	SELECT count(*) into total FROM book;
 END;
 
 
-MySQL´æ´¢¹ý³ÌµÄ²ÎÊýÓÃÔÚ´æ´¢¹ý³ÌµÄ¶¨Òå£¬¹²ÓÐÈýÖÖ²ÎÊýÀàÐÍIN¡¢OUT¡¢INOUT¡£ÐÎÊ½Èç£º
-CREATE PROCEDURE([[IN |OUT |INOUT ] ²ÎÊýÃû Êý¾ÝÀàÐÎ...])
-IN ÊäÈë²ÎÊý£º±íÊ¾¸Ã²ÎÊýµÄÖµ±ØÐëÔÚµ÷ÓÃ´æ´¢¹ý³ÌÊ±Ö¸¶¨£¬ÔÚ´æ´¢¹ý³ÌÖÐÐÞ¸Ä¸Ã²ÎÊýµÄÖµ²»ÄÜ±»·µ»Ø¡£
-OUT Êä³ö²ÎÊý£º¸ÃÖµ¿ÉÔÚ´æ´¢¹ý³ÌÄÚ²¿±»¸Ä±ä£¬²¢¿É·µ»Ø¡£
-INOUT ÊäÈëÊä³ö²ÎÊý£ºµ÷ÓÃÊ±Ö¸¶¨£¬²¢ÇÒ¿É±»¸Ä±äºÍ·µ»Ø¡£
+MySQLå­˜å‚¨è¿‡ç¨‹çš„å‚æ•°ç”¨åœ¨å­˜å‚¨è¿‡ç¨‹çš„å®šä¹‰ï¼Œå…±æœ‰ä¸‰ç§å‚æ•°ç±»åž‹INã€OUTã€INOUTã€‚å½¢å¼å¦‚ï¼š
+CREATE PROCEDURE([[IN |OUT |INOUT ] å‚æ•°å æ•°æ®ç±»å½¢...])
+IN è¾“å…¥å‚æ•°ï¼šè¡¨ç¤ºè¯¥å‚æ•°çš„å€¼å¿…é¡»åœ¨è°ƒç”¨å­˜å‚¨è¿‡ç¨‹æ—¶æŒ‡å®šï¼Œåœ¨å­˜å‚¨è¿‡ç¨‹ä¸­ä¿®æ”¹è¯¥å‚æ•°çš„å€¼ä¸èƒ½è¢«è¿”å›žã€‚
+OUT è¾“å‡ºå‚æ•°ï¼šè¯¥å€¼å¯åœ¨å­˜å‚¨è¿‡ç¨‹å†…éƒ¨è¢«æ”¹å˜ï¼Œå¹¶å¯è¿”å›žã€‚
+INOUT è¾“å…¥è¾“å‡ºå‚æ•°ï¼šè°ƒç”¨æ—¶æŒ‡å®šï¼Œå¹¶ä¸”å¯è¢«æ”¹å˜å’Œè¿”å›žã€‚
 
 
-Ò»¸öÊµÀý£¬ÓÃ´æ´¢¹ý³Ì¿ØÖÆÊý¾Ý²åÈë£¬±£Ö¤idµÄÁ¬ÐøÔö³¤¡£
+ä¸€ä¸ªå®žä¾‹ï¼Œç”¨å­˜å‚¨è¿‡ç¨‹æŽ§åˆ¶æ•°æ®æ’å…¥ï¼Œä¿è¯idçš„è¿žç»­å¢žé•¿ã€‚
 CREATE PROCEDURE p_savebook(IN book_name varchar(255), OUT book_id int)
 BEGIN
         SELECT (MAX(id)+1) INTO book_id FROM books;
@@ -31,15 +31,15 @@ BEGIN
 END;
 
 
-2£¬µ÷ÓÃ´æ´¢¹ý³Ì
+2ï¼Œè°ƒç”¨å­˜å‚¨è¿‡ç¨‹
 
-µ÷ÓÃ´æ´¢¹ý³ÌÊ¾Àý£º
+è°ƒç”¨å­˜å‚¨è¿‡ç¨‹ç¤ºä¾‹ï¼š
 
 SET @id=-1;
 CALL p_savebook('Head first SQL' , @id);
 SELECT @id;
 
 
-3£¬É¾³ý´æ´¢¹ý³Ì
+3ï¼Œåˆ é™¤å­˜å‚¨è¿‡ç¨‹
 
 DROP PROCEDURE p_savebook;

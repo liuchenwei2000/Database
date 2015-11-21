@@ -1,20 +1,20 @@
 
-1������洢����
+1，定义存储过程
 
-Oracle�洢���̴����ĸ�ʽ��
-CREATE OR REPLACE PROCEDURE �洢������(param1 IN type��param2 OUT type) 
+Oracle存储过程创建的格式：
+CREATE OR REPLACE PROCEDURE 存储过程名(param1 IN type，param2 OUT type) 
 AS
-����1 ����(ֵ��Χ);
-����2 ����(ֵ��Χ);
+变量1 类型(值范围);
+变量2 类型(值范围);
 BEGIN
 	...
 END;
 
-1��CREATE OR REPLACE PROCEDURE ֪ͨOracle���ݿ�ȥ����һ������ �洢������ �Ĵ洢����, ������ھ͸�������
-2��AS������IS���ؼ��ʱ������潫����һ��PL/SQL�塣
-3��BEGIN�ؼ��ʱ���PL/SQL��Ŀ�ʼ��END�ؼ��ʱ���PL/SQL��Ľ�����
+1，CREATE OR REPLACE PROCEDURE 通知Oracle数据库去创建一个叫做 存储过程名 的存储过程, 如果存在就覆盖它。
+2，AS（或者IS）关键词表明后面将跟随一个PL/SQL体。
+3，BEGIN关键词表明PL/SQL体的开始；END关键词表明PL/SQL体的结束。
 
-ʾ����
+示例：
 CREATE OR REPLACE PROCEDURE p_savebook(book_name IN varchar2, book_id OUT int)
 AS
 BEGIN
@@ -23,16 +23,16 @@ BEGIN
 END;
 
 
-ע�����
-1���洢���̲�������ȡֵ��Χ��IN��ʾ���룬OUT��ʾ��������Ϳ���ʹ������Oracle�еĺϷ����͡�
-2��������ȡֵ��Χ������ӷֺš�
-3����select into��������ֵ��
-4���ڴ��������쳣�� RAISE+�쳣����
+注意事项：
+1，存储过程参数不带取值范围，IN表示传入，OUT表示输出。类型可以使用任意Oracle中的合法类型。
+2，变量带取值范围，后面接分号。
+3，用select into给变量赋值。
+4，在代码中抛异常用 RAISE+异常名。
 
 
-2�����ô洢����
+2，调用存储过程
 
-���ô洢����ʾ����
+调用存储过程示例：
 
 DECLARE book_id number;book_name varchar(255);
 BEGIN
@@ -42,6 +42,6 @@ p_savebook(book_name,book_id);
 END;
 
 
-3��ɾ���洢����
+3，删除存储过程
 
 DROP PROCEDURE p_savebook;

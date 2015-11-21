@@ -1,37 +1,37 @@
 
-´¥·¢Æ÷£¨Trigger£©£ºÊÇÌØÊâµÄ´æ´¢¹ý³Ì£¬ËüµÄÖ´ÐÐ²»ÊÇÓÉ³ÌÐòµ÷ÓÃ£¬Ò²²»ÊÇÊÖ¹¤Æô¶¯£¬¶øÊÇÓÉÊÂ¼þÀ´´¥·¢¡£±ÈÈç£¬µ±¶ÔÒ»¸ö±í½øÐÐ²Ù×÷Ê±£¨INSERT¡¢UPDATE¡¢DELETE£©¾Í»á¼¤»îËüÖ´ÐÐ¡£
+è§¦å‘å™¨ï¼ˆTriggerï¼‰ï¼šæ˜¯ç‰¹æ®Šçš„å­˜å‚¨è¿‡ç¨‹ï¼Œå®ƒçš„æ‰§è¡Œä¸æ˜¯ç”±ç¨‹åºè°ƒç”¨ï¼Œä¹Ÿä¸æ˜¯æ‰‹å·¥å¯åŠ¨ï¼Œè€Œæ˜¯ç”±äº‹ä»¶æ¥è§¦å‘ã€‚æ¯”å¦‚ï¼Œå½“å¯¹ä¸€ä¸ªè¡¨è¿›è¡Œæ“ä½œæ—¶ï¼ˆINSERTã€UPDATEã€DELETEï¼‰å°±ä¼šæ¿€æ´»å®ƒæ‰§è¡Œã€‚
 
-¾­³£ÓÃÓÚ¼ÓÇ¿Êý¾ÝµÄÍêÕûÐÔÔ¼ÊøºÍÒµÎñ¹æÔòµÈ£¬±ÈÈçÒýÓÃÐ£Ñé¡¢¼¶ÁªÐÞ¸Ä»òÕß¼¶ÁªÉ¾³ý¡£
+ç»å¸¸ç”¨äºŽåŠ å¼ºæ•°æ®çš„å®Œæ•´æ€§çº¦æŸå’Œä¸šåŠ¡è§„åˆ™ç­‰ï¼Œæ¯”å¦‚å¼•ç”¨æ ¡éªŒã€çº§è”ä¿®æ”¹æˆ–è€…çº§è”åˆ é™¤ã€‚
 
-´´½¨´¥·¢Æ÷SQLÓï·¨£¨ÒÔOracleºÍMySQLÎªÀý£©£º
+åˆ›å»ºè§¦å‘å™¨SQLè¯­æ³•ï¼ˆä»¥Oracleå’ŒMySQLä¸ºä¾‹ï¼‰ï¼š
 
-CREATE TRIGGER ´¥·¢Æ÷Ãû
+CREATE TRIGGER è§¦å‘å™¨å
 	BEFORE/AFTER INSERT/UPDATE/DELETE
-		ON ±íÃû FOR EACH ROW
+		ON è¡¨å FOR EACH ROW
 			BEGIN
 			...
 			END;
 
-ÊµÀý£¨ÎªÐÂÔöÓÃ»§ÉèÖÃÄ¬ÈÏÃÜÂë_MySQL£©£º
+å®žä¾‹ï¼ˆä¸ºæ–°å¢žç”¨æˆ·è®¾ç½®é»˜è®¤å¯†ç _MySQLï¼‰ï¼š
 
 CREATE TRIGGER default_password
 	AFTER INSERT
 		ON user FOR EACH ROW
 			BEGIN
-				set new.password='123'; -- ÕâÀï¿ÉÒÔÊ¹ÓÃOLD´ú±í¾ÉÊý¾Ý£¬NEW´ú±íÐÂÊý¾Ý·ÃÎÊÆäÁÐÖµ¡£
+				set new.password='123'; -- è¿™é‡Œå¯ä»¥ä½¿ç”¨OLDä»£è¡¨æ—§æ•°æ®ï¼ŒNEWä»£è¡¨æ–°æ•°æ®è®¿é—®å…¶åˆ—å€¼ã€‚
 			END;
 
-ÊµÀý£¨¿ØÖÆÄêÁä²»ÄÜÐ¡ÓÚ18_Oracle£©£º			
+å®žä¾‹ï¼ˆæŽ§åˆ¶å¹´é¾„ä¸èƒ½å°äºŽ18_Oracleï¼‰ï¼š			
 			
 CREATE TRIGGER age_cannot_below_18
 	BEFORE INSERT OR UPDATE
 		ON employee FOR EACH ROW
 			WHEN (new.age < 18 )
 			BEGIN
-				Raise_application_error(-20001, 'ÄêÁä²»ÄÜÐ¡ÓÚ18');
+				Raise_application_error(-20001, 'å¹´é¾„ä¸èƒ½å°äºŽ18');
 			END;
 
 			
-É¾³ý´¥·¢Æ÷£º
+åˆ é™¤è§¦å‘å™¨ï¼š
 
-DROP TRIGGER ´¥·¢Æ÷Ãû;
+DROP TRIGGER è§¦å‘å™¨å;

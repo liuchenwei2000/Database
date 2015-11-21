@@ -1,46 +1,46 @@
 
-�ַ�������
+字符串函数
 
-�ַ�����������ı�洢�ڱ��е����ݣ�ֻ�ǰ��ַ����޸ĺ��ģ�����ɲ�ѯ������ء�
+字符串函数不会改变存储在表中的内容，只是把字符串修改后的模样当成查询结果返回。
 
-LEFT(my_column, length)�����е����ѡȡlength���ַ���
-RIGHT(my_column, length)�����е��Ҳ�ѡȡlength���ַ���
-SUBSTRING(my_column, start_position, length)����ȡ�ַ�������ȡ��ʼλ��Ϊstart_position����ȡ������lengthָ����
-UPPER(my_column):���ַ�����д��
-LOWER(my_column)�����ַ���Сд��
-REVERSE(my_column)����ת�ַ�����
-LENGTH(my_column)�������ַ������ȡ�
-LTRIM(my_column)�����������ո�
-RTRIM(my_column)������Ҳ����ո�
-
-
-�ۼ����������Ǿ�����GROUP BY������ʹ�ã�
-
-�ۼ������������ֵΪNULL���С��ۼ����������������ݣ���Щ�����Ǹ�Ч��Ƶģ����Ƿ��ؽ��һ���Ӧ�ó����м���Ҫ��öࡣ
-
-SUM(my_column)����ĳ����͡�
-AVG(my_column)����ĳ����ƽ��ֵ��
-MAX(my_column)��ȡĳ�е����ֵ��
-MIN(my_column)��ȡĳ�е���Сֵ��
-COUNT(my_column)������ĳ�е����������ĳ������ֵΪNULL��������㡣
-DISTINCT COUNT(my_column)������ĳ��ȥ���ظ����������
+LEFT(my_column, length)：从列的左侧选取length个字符。
+RIGHT(my_column, length)：从列的右侧选取length个字符。
+SUBSTRING(my_column, start_position, length)：截取字符串，截取起始位置为start_position，截取长度由length指定。
+UPPER(my_column):将字符串大写。
+LOWER(my_column)：将字符串小写。
+REVERSE(my_column)：反转字符串。
+LENGTH(my_column)：返回字符串长度。
+LTRIM(my_column)：清除左侧多余空格。
+RTRIM(my_column)：清除右侧多余空格。
 
 
-��ֵ��������
+聚集函数（它们经常与GROUP BY语句配合使用）
 
-ABS()�����ؾ���ֵ��
-COS()���������ҡ�
-EXP()������ָ��ֵ��
-PI()������Բ���ʡ�
-SIN()���������ҡ�
-SQRT()������ƽ������
-TAN()����������ֵ��
+聚集函数会忽略列值为NULL的行。聚集函数用来汇总数据，这些函数是高效设计的，它们返回结果一般比应用程序中计算要快得多。
+
+SUM(my_column)：对某列求和。
+AVG(my_column)：对某列求平均值。
+MAX(my_column)：取某列的最大值。
+MIN(my_column)：取某列的最小值。
+COUNT(my_column)：返回某列的行数，如果某行数据值为NULL则不纳入计算。
+DISTINCT COUNT(my_column)：返回某列去除重复后的行数。
 
 
-�����ຯ���ڲ�ͬ�����ݿ��м������ǲ�ͬ�ģ������ȡ��ǰ����ʱ�䣺
-Oracle��SYSDATE
-MySQL��NOW()��SYSDATE()��CURRENT_TIMESTAMP
-SQLServer��GETDATE()
-DB2��CURRENT_DATE
-PostgreSQL��CURRENT_DATE
-Sybase��GETDATE()
+数值处理函数
+
+ABS()：返回绝对值。
+COS()：返回余弦。
+EXP()：返回指数值。
+PI()：返回圆周率。
+SIN()：返回正弦。
+SQRT()：返回平方根。
+TAN()：返回正切值。
+
+
+日期类函数在不同的数据库中几乎都是不同的，比如获取当前日期时间：
+Oracle：SYSDATE
+MySQL：NOW()、SYSDATE()、CURRENT_TIMESTAMP
+SQLServer：GETDATE()
+DB2：CURRENT_DATE
+PostgreSQL：CURRENT_DATE
+Sybase：GETDATE()
